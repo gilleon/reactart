@@ -1,4 +1,9 @@
 import { useState } from "react";
+import {
+  controlledContainer,
+  Label,
+  Input,
+} from "../components/authInput/styled-component.js";
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -22,30 +27,30 @@ export default function AuthInputs() {
 
   return (
     <div id="auth-inputs">
-      <div className="controls">
+      <controlledContainer>
         <p>
-          <label className={`label ${emailNotValid ? "invalid" : undefined}`}>
-            Email
-          </label>
-          <input
+          {/* using props to set dynamic styling using styled-component */}
+          <Label invalid={emailNotValid}>Email</Label>
+          {/* defualt setting dynamic classes */}
+          <Input
             type="email"
             className={emailNotValid ? "invalid" : undefined}
             onChange={(event) => handleInputChange("email", event.target.value)}
           />
         </p>
         <p>
-          <label className={`label ${emailNotValid ? "invalid" : undefined}`}>
+          <Label className={`label ${emailNotValid ? "invalid" : undefined}`}>
             Password
-          </label>
-          <input
+          </Label>
+          <Input
             type="password"
-            className={passwordNotValid ? "invalid" : undefined}
+            invalid={passwordNotValid}
             onChange={(event) =>
               handleInputChange("password", event.target.value)
             }
           />
         </p>
-      </div>
+      </controlledContainer>
       <div className="actions">
         <button type="button" className="text-button">
           Create a new account
