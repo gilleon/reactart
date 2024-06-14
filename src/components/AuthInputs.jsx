@@ -1,8 +1,9 @@
 import { useState } from "react";
 import {
-  controlledContainer,
+  ControlledContainer,
   Label,
   Input,
+  Button,
 } from "../components/authInput/styled-component.js";
 
 export default function AuthInputs() {
@@ -27,10 +28,10 @@ export default function AuthInputs() {
 
   return (
     <div id="auth-inputs">
-      <controlledContainer>
+      <ControlledContainer>
         <p>
           {/* using props to set dynamic styling using styled-component */}
-          <Label invalid={emailNotValid}>Email</Label>
+          <Label $invalid={emailNotValid}>Email</Label>
           {/* defualt setting dynamic classes */}
           <Input
             type="email"
@@ -44,20 +45,20 @@ export default function AuthInputs() {
           </Label>
           <Input
             type="password"
-            invalid={passwordNotValid}
+            $invalid={passwordNotValid}
             onChange={(event) =>
               handleInputChange("password", event.target.value)
             }
           />
         </p>
-      </controlledContainer>
+      </ControlledContainer>
       <div className="actions">
         <button type="button" className="text-button">
           Create a new account
         </button>
-        <button className="button" onClick={handleLogin}>
+        <Button className="button" onClick={handleLogin}>
           Sign In
-        </button>
+        </Button>
       </div>
     </div>
   );
